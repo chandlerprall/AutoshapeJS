@@ -1,0 +1,170 @@
+AutoshapeJS v.1
+
+(C)2011, Chandler Prall <chandler.prall@gmail.com>
+See LICENSE-MIT.txt for license information
+https://github.com/chandlerprall/AutoshapeJS
+
+--------------------
+
+INTRODUCTION / USAGE
+
+AutoshapeJS makes it easy to include geometric shapes in your HTML document. Seriously easy. By adding
+just a couple class names you can turn any element into any supported shape. Code for a triangle, for example:
+
+<div class="autoshape shape-triangle"></div>
+
+Each shape has different attributes which can be set. The attributes are appended to the `shape-` class name as
+a key:value pair. For instance, to make a red triangle you would use
+
+<div class="autoshape shape-triangle-color:red"></div>
+
+Multiple attributes can be included, each one separated by a hyphen. To show a red triangle 50 pixels width and 20 pixels tall:
+
+<div class="autoshape shape-triangle-color:red-width:50px-height:20px"></div>
+
+AutoshapeJS supports these shapes by default: Boxes, Circles, Eclipses, Polygons, Stars, and Triangles.
+
+--------------------
+
+SHAPES & ATTRIBUTES
+
+All shapes can have these attributes specified:
+* rotate - number of degrees to rotate clockwise
+	rotate:45 rotates the shape 45 degrees clockwise
+	
+* opacity - number ranging from 0.0 - 1.0 which determines the shape's opacity
+	opacity:.5 gives the shape 50% opacity
+	
+* color - sets the shape's color, all valid CSS colors are supported
+	color:black makes the shape black
+	
+* transformorigin - Equivalent to the CSS `transform-origin` attribute, pipe characters ( i.e. | ) in the value are converted to spaces
+	transformorigin:50%|50% sets the transform-origin to the middle of the element
+	
+* position - Equivalent to the CSS `position` attribute
+	position:relative
+	
+* left - Equivalent to the CSS `left` attribute
+	left:0px
+	
+* top - Equivalent to the CSS `top` attribute
+	top:0px
+
+
+BOXES include the following attributes:
+* height - specifies the box's height
+	height:50px
+	
+* width - specifies the box's width
+	width:50px
+	
+* borderwidth - any value greater than 0 creates a border of the specified width
+	borderwidth:2px
+	
+* bordercolor - specifies the box's border color
+	bordercolor:#ffaa88
+
+
+CIRCLES include the following attributes:
+* radius - specifies the circle's radius
+	radius:30px
+	
+* borderwidth - any value greater than 0 creates a border of the specified width
+	borderwidth:2px
+
+* bordercolor - specifies the circle's border color
+	bordercolor:#ffaa88
+
+
+ECLIPSES include the following attributes
+* radius - specifies the eclipse's radius
+	radius:30px
+	
+* width - specifies the width of the eclipse, or of each part in the format top|right|bottom|left (mimics the attribute order found in CSS)
+	width:1px|0px|2px - this would create an eclipse with a top part of 1px, no left or right parts (0px), and a bottom part of 2px
+
+* color - specifies the eclipses color, can be specified in the same format as the width attribute
+	color:blue|transparent|red - this would create an eclipse with a top color of blue, left and right parts invisible, and a red bottom part
+
+
+POLYGONS include the following attributes:
+* radius - specifies the radius of the element
+	radius:40px
+	
+* sides - specifies how many sides the polygon has
+	sides:5
+
+
+STARS include the following attributes:
+* radius - specifies the radius of the element
+	radius:40px
+	
+* spikes - specifies how many spikes the star has
+	spikes:5
+
+* spikewidth - specifies how wide the base of each spike is
+	spikewidth: 20px
+
+
+TRIANGLES include the following attributes:
+* height - specifies the triangle's height
+	height:50px
+	
+* width - specifies the triangle's width
+	width:50px
+	
+* type - specifies the kind of triangle: oblique (full), left (right-facing), or right (left-facing)
+	type:oblique
+
+
+UNICODE CHARACTERS include the following attributes:
+* height - specifies the character's height
+	height:50px
+
+* character - specifies what unicode character to display
+			Values can be specified as the character's decimal code or as one of the character names defined in autoshape-unicode.js
+			The following two definitions are the same
+	character:#9632
+	character:square
+
+** NOTE **
+In order to use the unicode characters you must also include the autoshape-unicode.js file in your pages.
+
+--------------------
+
+BROWSER SUPPORT
+
+Currently only browsers which include the W3C Javascript and CSS3 specifications are supported. The development actively supports:
+Internet Explorer 9 (limited support for IE8 is planned for the future)
+Firefox 3.6 & 4
+Safari 5+
+Chrome 10+
+Opera 10+
+
+--------------------
+
+ADDITIONAL NOTES
+
+* All color values can be any valid CSS color. E.g. black, cyan, #ff000, #555, rgb(255,0,0), rgba(255,0,0,50), etc
+
+* Any size/width/height values can be specified using any valid CSS units. E.g. px, em, %, in, cm, mm, etc. If a unit is left out, 'px' is assumed.
+
+* While shapes are guaranteed to work in all supported browsers, the appearance of some shapes may vary between browsers. This can be noticed primarily in the anti-aliasing.
+
+* Shapes can also be constructed with Javascript:
+
+<div id="my_shape"></div>
+
+<script type="text/javascript">
+
+// Both `my_shape` declarations will yield the same results
+var my_shape = AutoshapeJS.createShape('shape-box-color:red-rotate:45');
+var my_shape = AutoshapeJS.createShape({
+	shape:'Box',
+	color:'red',
+	rotate:45
+});
+
+my_shape.attachTo('my_shape'); // Attaches the shape to the 'my_shape' element defined above.
+
+</script>

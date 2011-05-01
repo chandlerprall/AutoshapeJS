@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+	<title>AutoshapeJS README</title>
+	
+	<style type="text/css">
+		body {
+			font-family: Arial;
+			font-size: 10pt;
+			line-height: 14pt;
+		}
+		
+		h1 {
+			margin: 0;
+			float: left;
+		}
+		
+		h2 {
+			color: #444;
+		}
+		
+		ul li {
+			margin-bottom: 5px;
+		}
+		
+		p.sub {
+			margin: 0;
+			padding: 0;
+			color: #999;
+			font-size: 8pt;
+			text-align: right;
+		}
+		
+		span.version {
+			font-size: .5em;
+			color: #999;
+		}
+		
+		code {
+			font-size: 8pt;
+			text-shadow: #666 1px 1px 3px;
+			padding: 2px;
+		}
+		code:hover {
+			background-color: #3399ff;
+		}
+		
+		div.example {
+			background-color: #eee;
+			border: 1px solid #999;
+			padding: 10px;
+			width: 700px;
+			margin: 0 auto;
+		}
+		
+		.separator {
+			clear: both;
+			border-width: 1px 0 0;
+			border-color: #999;
+			border-style: solid;
+			margin: 15px 0;
+		}
+		
+		#content {
+			width: 800px;
+			margin: 30px auto;
+			border: 1px solid #999;
+			padding: 5px 20px 10px;
+		}
+	</style>
+	
+	<script type="text/javascript" src="js/autoshape-min.js"></script>
+	<script type="text/javascript" src="js/autoshape-unicode-min.js"></script>
+	
+</head>
+
+<body>
+	<div id="content">
+	
+		<h1>
+			AutoshapeJS<span class="version">v.1</span>
+			<span class="autoshape shape-polygon-radius:35-sides:6-color:green"></span>
+			<span class="autoshape shape-circle-radius:30-color:red-opacity:.6-left:(55)"></span>
+			<span style="position: relative; z-index: 2;" class="autoshape shape-star-radius:23-color:yellow-left:(105)"></span>
+			<span class="autoshape shape-triangle-height:50-width:30-color:blue-left:(135)-opacity:.7"></span>
+			
+			<span class="autoshape shape-polygon-radius:5px-opacity:.1" style="margin-left: -100px;"></span>
+			<span class="autoshape shape-polygon-radius:10px-opacity:.2-sides:6"></span>
+			<span class="autoshape shape-polygon-radius:15px-opacity:.4-sides:7"></span>
+			<span class="autoshape shape-polygon-radius:20px-opacity:.6-sides:8"></span>
+			<span class="autoshape shape-polygon-radius:25px-opacity:.8-sides:9"></span>
+		</h1>
+		
+		<p class="sub">&copy;2011, Chandler Prall &lt;chandler.prall@gmail.com&gt;</p>
+		<p class="sub">See LICENSE-MIT.txt for license information</p>
+		<p class="sub"><a href="https://github.com/chandlerprall/AutoshapeJS" target="_blank">https://github.com/chandlerprall/AutoshapeJS</a></p>
+		
+		<div class="separator"></div>
+		
+			<h2>INTRODUCTION / USAGE</h2>
+	
+			<p>AutoshapeJS makes it easy to include geometric shapes in your HTML document. Seriously easy. By adding just a couple class names you can turn any element into any supported shape. Code for a triangle, for example:</p>
+			
+			<div class="example">
+				<span class="autoshape shape-triangle"></span>
+				<code>&lt;span class="autoshape shape-triangle"&gt;&lt;/span&gt;</code>
+			</div>
+			
+			<p>Each shape has different attributes which can be set. The attributes are appended to the `<i>shape-</i>` class name as a key:value pair. For instance, to make a red triangle you would use</p>
+			
+			<div class="example">
+				<span class="autoshape shape-triangle-color:red"></span>
+				<code>&lt;span class="example autoshape shape-triangle-color:red"&gt;&lt;/span&gt;</code>
+			</div>
+			
+			<p>Multiple attributes can be included, each one separated by a hyphen. To show a red triangle 50 pixels width and 20 pixels tall:</p>
+			
+			<div class="example">
+				<span class="autoshape shape-triangle-color:red-width:50px-height:20px"></span>
+				<code>&lt;span class="example autoshape shape-triangle-color:red-width:50px-height:20px"&gt;&lt;/span&gt;</code>
+			</div>
+			
+			<p>AutoshapeJS supports these shapes by default: <i>Boxes</i>, <i>Circles</i>, <i>Eclipses</i>, <i>Polygons</i>, <i>Stars</i>, and <i>Triangles</i>.</p>
+		
+		<div class="separator"></div>
+		
+			<h2>SHAPES & ATTRIBUTES</h2>
+			
+			<p><strong>All shapes</strong> can have these attributes specified:</p>
+			
+			<ul>
+				<li><i>rotate</i> - number of degrees to rotate clockwise</li>
+				<li><i>opacity</i> - number ranging from 0.0 - 1.0 which determines the shape's opacity></li>
+				<li><i>color</i> - sets the shape's color, all valid CSS colors are supported</li>
+				<li><i>transformorigin</i> - Equivalent to the CSS `<i>transform-origin</i>` attribute, pipe characters ( i.e. | ) in the value are converted to spaces</li>
+				<li><i>position</i> - Equivalent to the CSS `<i>position</i>` attribute</li>
+				<li><i>left</i> - Equivalent to the CSS `<i>left</i>` attribute</li>
+				<li><i>top</i> - Equivalent to the CSS `<i>top</i>` attribute</li>
+			</ul>
+			
+			<div class="example">
+				<span class="autoshape shape-box-rotate:15"></span>
+				<code>&lt;span class="autoshape shape-box-rotate:15"&gt;&lt;/span&gt;</code>
+				<br />
+				<span class="autoshape shape-box-opacity:.2"></span>
+				<code>&lt;span class="autoshape shape-box-opacity:.2"&gt;&lt;/span&gt;</code>
+				<br />
+				<span class="autoshape shape-box-color:red"></span>
+				<code>&lt;span class="autoshape shape-box-color:red"&gt;&lt;/span&gt;</code>
+			</div>
+			
+			<p><strong>BOXES</strong> can have these attributes specified:</p>
+			
+			<ul>
+				<li><i>height</i> - specifies the box's height</li>
+				<li><i>width</i> - specifies the box's width</li>
+				<li><i>borderwidth</i> - any value greater than 0 creates a border of the specified width</li>
+				<li><i>bordercolor</i> - specifies the box's border color</li>
+			</ul>
+			
+			<div class="example">
+				<span class="autoshape shape-box-height:10px"></span>
+				<code>&lt;span class="autoshape shape-box-height:10px"&gt;&lt;/span&gt;</code>
+				<br />
+				<span class="autoshape shape-box-width:20px"></span>
+				<code>&lt;span class="autoshape shape-box-width:20px"&gt;&lt;/span&gt;</code>
+				<br />
+				<span class="autoshape shape-box-borderwidth:2px-bordercolor:red"></span>
+				<code>&lt;span class="autoshape shape-box-borderwidth:2px-bordercolor:red&gt;&lt;/span&gt;</code>
+			</div>
+			
+			<p><strong>CIRCLES</strong> can have these attributes specified:</p>
+			
+			<ul>
+				<li><i>radius</i> - specifies the circle's radius</li>
+				<li><i>borderwidth</i> - any value greater than 0 creates a border of the specified width</li>
+				<li><i>bordercolor</i> - specifies the box's border color</li>
+			</ul>
+			
+			<div class="example">
+				<span class="autoshape shape-circle-radius:40px"></span>
+				<code>&lt;span class="autoshape shape-circle-radius:40px"&gt;&lt;/span&gt;</code>
+				<br />
+				<span class="autoshape shape-circle-borderwidth:2px-bordercolor:green"></span>
+				<code>&lt;span class="autoshape shape-circle-borderwidth:2px-bordercolor:green"&gt;&lt;/span&gt;</code>
+			</div>
+			
+			<p><strong>ECLIPSES</strong> can have these attributes specified:</p>
+			
+			<ul>
+				<li><i>radius</i> - specifies the eclipse's radius</li>
+				<li><i>width</i> - specifies the width of the eclipse, or of each part in the format top|right|bottom|left (mimics the attribute order found in CSS)</li>
+				<li><i>color</i> - specifies the eclipses color, can be specified in the same format as the width attribute</li>
+			</ul>
+			
+			<div class="example">
+				<span class="autoshape shape-eclipse-radius:40px"></span>
+				<code>&lt;span class="autoshape shape-eclipse-radius:40px"&gt;&lt;/span&gt;</code>
+				<br />
+				<span class="autoshape shape-eclipse-width:2px-color:red|green|blue|yellow"></span>
+				<code>&lt;span class="autoshape shape-eclipse-width:2px-color:red|green|blue|yellow"&gt;&lt;/span&gt;</code>
+			</div>
+			
+			<p><strong>POLYGONS</strong> can have these attributes specified:</p>
+			
+			<ul>
+				<li><i>radius</i> - specifies the eclipse's radius</li>
+				<li><i>sides</i> - specifies how many sides the polygon has</li>
+			</ul>
+			
+			<div class="example">
+				<span class="autoshape shape-polygon-radius:40px"></span>
+				<code>&lt;span class="autoshape shape-polygon-radius:40px"&gt;&lt;/span&gt;</code>
+				<br />
+				<span class="autoshape shape-polygon-sides:6"></span>
+				<code>&lt;span class="autoshape shape-polygon-sides:6"&gt;&lt;/span&gt;</code>
+				<br />
+				<span class="autoshape shape-polygon-sides:8"></span>
+				<code>&lt;span class="autoshape shape-polygon-sides:8"&gt;&lt;/span&gt;</code>
+				<br />
+				<span class="autoshape shape-polygon-sides:20"></span>
+				<code>&lt;span class="autoshape shape-polygon-sides:20"&gt;&lt;/span&gt;</code>
+			</div>
+			
+			<p><strong>STARS</strong> can have these attributes specified:</p>
+			
+			<ul>
+				<li><i>radius</i> - specifies the star's radius</li>
+				<li><i>spikes</i> - specifies how many spikes the star has</li>
+				<li><i>spikewidth</i> - specifies how wide the base of each spike is</li>
+			</ul>
+			
+			<div class="example">
+				<span class="autoshape shape-star-radius:40px"></span>
+				<code>&lt;span class="autoshape shape-star-radius:40px"&gt;&lt;/span&gt;</code>
+				<br />
+				<span class="autoshape shape-star-spikes:8"></span>
+				<code>&lt;span class="autoshape shape-star-spikes:8"&gt;&lt;/span&gt;</code>
+				<br />
+				<span class="autoshape shape-star-spikewidth:40px"></span>
+				<code>&lt;span class="autoshape shape-star-spikewidth:40px"&gt;&lt;/span&gt;</code>
+			</div>
+			
+			<p><strong>TRIANGLES</strong> can have these attributes specified:</p>
+			
+			<ul>
+				<li><i>height</i> - specifies the triangle's height</li>
+				<li><i>width</i> - specifies the triangle's width</li>
+				<li><i>type</i> - specifies the kind of triangle: oblique (full), left (right-facing), or right (left-facing)</li>
+			</ul>
+			
+			<div class="example">
+				<span class="autoshape shape-triangle-height:20px"></span>
+				<code>&lt;span class="autoshape shape-triangle-height:20px"&gt;&lt;/span&gt;</code>
+				<br />
+				<span class="autoshape shape-triangle-width:20px"></span>
+				<code>&lt;span class="autoshape shape-triangle-width:20px"&gt;&lt;/span&gt;</code>
+				<br />
+				<span class="autoshape shape-triangle-type:left"></span>
+				<code>&lt;span class="autoshape shape-triangle-type:left"&gt;&lt;/span&gt;</code>
+			</div>
+			
+			<p><strong>UNICODE CHARACTERS</strong> can have these attributes specified:</p>
+			
+			<ul>
+				<li><i>height</i> - specifies the chracter's height</li>
+				<li><i>character</i> - specifies what unicode character to display. Values can be specified as the character's decimal code or as one of the character names defined in autoshape-unicode.js</li>
+			</ul>
+
+			<div class="example">
+				<span class="autoshape shape-unicode-character:square-height:80px"></span>
+				<code>&lt;span class="autoshape shape-unicode-character:square"&gt;&lt;/span&gt;</code>
+				<br />
+				<span class="autoshape shape-unicode-character:#9632"></span>
+				<code>&lt;span class="autoshape shape-unicode-character:#9632"&gt;&lt;/span&gt;</code>
+				<br />
+				<span class="autoshape shape-unicode-character:sun"></span>
+				<code>&lt;span class="autoshape shape-unicode-character:sun"&gt;&lt;/span&gt;</code>
+			</div>
+			
+			<p><strong>** NOTE ** In order to use the unicode characters you must also include the autoshape-unicode.js file in your pages.</strong></p>
+			
+		<div class="separator"></div>
+		
+			<h2>BROWSER SUPPORT</h2>
+			
+			<p>Currently only browsers which include the W3C Javascript and CSS3 specifications are supported. The development actively supports:</p>
+			
+			<ul>
+				<li>Internet Explorer 9 <i>(limited support for IE8 is planned for the future)</i></li>
+				<li>Firefox 3.6 & 4</li>
+				<li>Safari 5+</li>
+				<li>Chrome 10+</li>
+				<li>Opera 10+</li>
+			</ul>
+			
+		<div class="separator"></div>
+		
+			<h2>ADDITIONAL NOTES</h2>
+			
+			<ul>
+				<li>All color values can be any valid CSS color. E.g. black, cyan, #ff000, #555, rgb(255,0,0), rgba(255,0,0,50), etc</li>
+				<li>Any size/width/height values can be specified using any valid CSS units. E.g. px, em, %, in, cm, mm, etc. If a unit is left out, 'px' is assumed.</li>
+				<li>While shapes are guaranteed to work in all supported browsers, the appearance of some shapes may vary between browsers. This can be noticed primarily in the anti-aliasing.</li>
+				<li>
+					Shapes can also be constructed with Javascript:
+
+					<div class="example"><code>
+						&lt;div id="my_shape"&gt;&lt;/div&gt;<br />
+						<br />
+						&lt;script type="text/javascript"&gt;<br />
+						<br />
+						// Both `my_shape` declarations will yield the same results<br />
+						var my_shape = AutoshapeJS.createShape('shape-box-color:red-rotate:45');<br />
+						var my_shape = AutoshapeJS.createShape({<br />
+							shape:'Box',<br />
+							color:'red',<br />
+							rotate:45<br />
+						});<br />
+						<br />
+						my_shape.attachTo('my_shape'); // Attaches the shape to the 'my_shape' element defined above.<br />
+						<br />
+						&lt;/script&gt;
+					</code></div>
+				</li>
+			</ul>
+		
+	</div>
+</body>
+
+</html>
