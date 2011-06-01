@@ -141,7 +141,22 @@
 		
 		/* Methods */
 		// Private
-		extend = function (base, extension) {
+		var getElementsByClassName = document.getElementsByClassName || function getElementsByClassName(classname) {
+			if  (!(classname instanceof RegExp)) { classname = new RegExp('(^|\\W)' + classname + '($|\\W)'); }
+			
+			var elements = [];
+			if (classname.test(this.className)) {
+				elements.push(this);
+			}
+			
+			for (var i = 0; i < this.childNodes.length; i++) {
+				elements = elements.concat(getElementsByClassName.call(this.childNodes[i], classname));
+			}
+			
+			return elements;
+		};
+		
+		var extend = function (base, extension) {
 			var extended, key, value;
 			if (typeof base !== 'function' || typeof base.prototype === 'undefined') { return false; } // We can only extend a prototype
 			if (typeof extension !== 'object') { return false; } // We can only extend using an object
@@ -169,7 +184,7 @@
 			return extended;
 		};
 		
-		merge = function () {
+		var merge = function () {
 			var i, obj, key, merged = {};
 			
 			for (i = 0; i < arguments.length; i++) {
@@ -184,7 +199,7 @@
 			return merged;
 		};
 		
-		parseConstructorString = function (constructor_string) {
+		var parseConstructorString = function (constructor_string) {
 			var config = {}, // config is the return value
 				parts = constructor_string.split('-'), // split the constructor string into parts
 				shape,
@@ -192,11 +207,11 @@
 				part,
 				key_value;
 			parts.shift(); // pull off the "shape" value
-
+			
 			// Build config object
 			shape = parts.shift();
 			if (typeof shape === 'undefined') { return false; }
-			config.shape = shape[0].toUpperCase() + shape.substr(1).toLowerCase();
+			config.shape = shape.substr(0,1).toUpperCase() + shape.substr(1).toLowerCase();
 			for (i = 0; i < parts.length; i++) {
 				part = parts[i];
 				key_value = part.split(':');
@@ -208,7 +223,7 @@
 			return config;
 		};
 		
-		dashedToCamel = function (value) {
+		var dashedToCamel = function (value) {
 			return value.replace(/-(\w)/g, function (all, letter) {
 				return letter.toUpperCase();
 			});
@@ -242,9 +257,9 @@
 		
 		this.attach = function () {
 			var elements, i, element, shape_constructor, shape;
-			if (typeof document.getElementsByClassName === 'undefined') { return false; } // Relying on W3C standards for now
+			//if (typeof document.getElementsByClassName === 'undefined') { return false; } // Relying on W3C standards for now
 			
-			elements = document.getElementsByClassName('autoshape');
+			elements = getElementsByClassName.call(document, 'autoshape');
 			for (i = 0; i < elements.length; i++) {
 				element = elements[i];
 				shape_constructor = element.className.match(REGEX.SHAPE);
