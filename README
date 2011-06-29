@@ -135,7 +135,7 @@ In order to use the unicode characters you must also include the autoshape-unico
 BROWSER SUPPORT
 
 Currently only browsers which include the W3C Javascript and CSS3 specifications are supported. The development actively supports:
-Internet Explorer 9 (limited support for IE8 is planned for the future)
+Internet Explorer 9, limited support for IE8 and IE7.
 Firefox 3.6 & 4
 Safari 5+
 Chrome 10+
